@@ -1,0 +1,7 @@
+# from https://www.raspberrypi.org/forums/viewtopic.php?t=14966
+# Increase volume by 5%
+alias volu='sudo amixer set PCM -- $[$(amixer get PCM|grep -o [0-9]*%|sed 's/%//')+5]%'
+# Decrease volume by 5%
+alias vold='sudo amixer set PCM -- $[$(amixer get PCM|grep -o [0-9]*%|sed 's/%//')-5]%'
+
+PATH=$PATH:~/bin
