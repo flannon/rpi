@@ -40,25 +40,21 @@ fi
 AVSINSTALLSCRIPTSUM="$(cd $AVSSAMPLEAPPDIR && md5sum $AVSINSTALLSCRIPT | cut -d ' ' -f 1)"
 AVSREFERENCESCRIPTSUM="$(cd $CONFDIR/etc && md5sum $AVSINSTALLSCRIPT |  cut -d ' ' -f 1)"
 
-#echo $AVSINSTALLSCRIPTSUM
-#echo $AVSREFERENCESCRIPTSUM
-
 # Check that the current version of the install scrip is the same 
 # as the reference script
 if [[ ! -f $VALID ]]; then
   touch $VALID
-  #if [[ $AVSINSTALLSCRIPTSUM != $AVSREFERENCESCRIPTSUM ]]; then
-  #  echo "This version of $AVSINSTALLSCRIPT is not currently supported" 
-  #  exit 5
   [[ $AVSINSTALLSCRIPTSUM != $AVSREFERENCESCRIPTSUM ]] && \
     echo "This version of $AVSINSTALLSCRIPT is not currently supported" && \
     exit 5
-  #fi
 fi
 
 # Run the erb template to load ProductID, ClientID and ClientSecret
 # into the install script 
 [[ -f $AVSSAMPLEAPPDIR/$AVSINSTALLSCRIPT ]] && \
- echo "Run the erb template" \
  erb $CONFDIR/templates/automated_install.sh.erb > \
  $AVSSAMPLEAPPDIR/$AVSINSTALLSCRIPT
+
+
+cd $AVSSAMPLEAPPDIR
+source $AVSINSTALLSCRIPT
