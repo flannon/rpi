@@ -46,5 +46,7 @@ for i in $(ls); do
 done
 cd $OLDPWD
 
-# set vim as the git editor
-git config --global core.editor $(which vim)
+# set vim.tiny as the git editor
+git config --global user.email "flannon@5eight5.com"
+git config --global user.name "Flannon Jackson"
+git config --global core.editor $(which vim.tiny)
