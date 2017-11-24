@@ -5,7 +5,7 @@ alias volu='sudo amixer set PCM -- $[$(amixer get PCM|grep -o [0-9]*%|sed 's/%//
 alias vold='sudo amixer set PCM -- $[$(amixer get PCM|grep -o [0-9]*%|sed 's/%//')-5]%'
 
 
-[[ -f /usr/local/go/bin/go ]] && export PATH=$PATH:/usr/local/go/bin:~/go/bin" 
+[[ -f /usr/local/go/bin/go ]] && export PATH="$PATH:/usr/local/go/bin:~/go/bin" 
 
 [[ -f /usr/bin/vim.tiny ]] && alias vi="/usr/bin/vim.tiny"
 alias lo="exit"
